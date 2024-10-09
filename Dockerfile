@@ -8,13 +8,13 @@ ENV JTDS_VERSION=1.3.1
 RUN mkdir -p /tmp/drivers_inc
 WORKDIR /tmp/drivers_inc
 
-RUN curl -L "https://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_VERSION}/mysql-connector-java-${MYSQL_VERSION}.jar" \
+RUN curl -k -L "https://search.maven.org/remotecontent?filepath=mysql/mysql-connector-java/${MYSQL_VERSION}/mysql-connector-java-${MYSQL_VERSION}.jar" \
           -o "mysql-connector-java-${MYSQL_VERSION}.jar" && \
-    curl -L "https://search.maven.org/remotecontent?filepath=org/mariadb/jdbc/mariadb-java-client/${MARIADB_VERSION}/mariadb-java-client-${MARIADB_VERSION}.jar" \
+    curl -k -L "https://search.maven.org/remotecontent?filepath=org/mariadb/jdbc/mariadb-java-client/${MARIADB_VERSION}/mariadb-java-client-${MARIADB_VERSION}.jar" \
           -o "mariadb-java-client-${MARIADB_VERSION}.jar" && \
-    curl -L "https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${POSTGRESQL_VERSION}/postgresql-${POSTGRESQL_VERSION}.jar" \
+    curl -k -L "https://search.maven.org/remotecontent?filepath=org/postgresql/postgresql/${POSTGRESQL_VERSION}/postgresql-${POSTGRESQL_VERSION}.jar" \
           -o "postgresql-${POSTGRESQL_VERSION}.jar" && \
-    curl -L "https://search.maven.org/remotecontent?filepath=net/sourceforge/jtds/jtds/${JTDS_VERSION}/jtds-${JTDS_VERSION}.jar" \
+    curl -k -L "https://search.maven.org/remotecontent?filepath=net/sourceforge/jtds/jtds/${JTDS_VERSION}/jtds-${JTDS_VERSION}.jar" \
           -o "jtds-${JTDS_VERSION}.jar"
 
 FROM eclipse-temurin:17.0.9_9-jre-jammy AS base

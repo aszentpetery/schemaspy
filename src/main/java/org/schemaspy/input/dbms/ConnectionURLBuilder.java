@@ -51,12 +51,15 @@ public class ConnectionURLBuilder {
         args.addAll(connectionConfig.getRemainingArguments());
 
         String connectionURL = connectionConfig.getDatabaseTypeProperties().getProperty("connectionSpec");
+        connectionURL = connectionURL.replaceAll("/<db>", "");
+
         List<DbSpecificOption> options = connectionConfig.getDbSpecificConfig().getOptions();
         for (DbSpecificOption option : options) {
             option.setValue(getParam(args, option));
 
             LOGGER.debug("{}",option);
 
+            //System.out.println("<" + option.getName() + "> : " + option.getValue());
             // replace e.g. <host> with myDbHost
             connectionURL = connectionURL.replaceAll("<" + option.getName() + ">", option.getValue());
         }
